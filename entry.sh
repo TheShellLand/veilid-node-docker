@@ -2,7 +2,7 @@
 
 # entrypoint
 
-set -xe
+set -e
 
 id
 
@@ -24,11 +24,11 @@ if [ ! -z "$LOGGING_SYSTEM_ENABLED" ]; then
   VEILID_EVAL="${VEILID_EVAL} -s logging.system.enabled=${LOGGING_SYSTEM_ENABLED}"
 fi
 
-if [ ! -z "$DEBUG" ]; then
+if [ "$DEBUG" == "true" ]; then
   VEILID_EVAL="${VEILID_EVAL} --debug"
 fi
 
-if [ ! -z "$TRACE" ]; then
+if [ "$TRACE" == "true" ]; then
   VEILID_EVAL="${VEILID_EVAL} --trace"
 fi
 
