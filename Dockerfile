@@ -39,4 +39,10 @@ VOLUME /logs
 # data
 VOLUME /var/db/veilid-server
 
+# listen_address
+EXPOSE 5959
+
+# grpc_endpoint
+EXPOSE 4317
+
 ENTRYPOINT ["/bin/bash", "/entry.sh"]
