@@ -20,6 +20,10 @@ official: https://gitlab.com/veilid/veilid/-/blob/main/INSTALL.md
 /bin/bash run.sh
 ```
 
+```shell
+bash run.sh -e DEBUG=false -e TRACE=true 
+```
+
 ## Arguments
 
 ```shell

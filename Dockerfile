@@ -45,4 +45,7 @@ EXPOSE 5959
 # grpc_endpoint
 EXPOSE 4317
 
+EXPOSE 80
+EXPOSE 443
+
 ENTRYPOINT ["/bin/bash", "/entry.sh"]
