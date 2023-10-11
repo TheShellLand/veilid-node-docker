@@ -14,7 +14,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   #IMAGE_NAME: ${{ github.repository }}
-  IMAGE_NAME: theshellland/veilid-node-docker
+  IMAGE_NAME: theshellland/veilid-node
 
 
 jobs:
