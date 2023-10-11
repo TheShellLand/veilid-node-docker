@@ -1,5 +1,12 @@
 FROM ubuntu:latest
 
+ENV RUST_BACKTRACE 1
+ENV RUST_BACKTRACE full
+ENV COLORBT_SHOW_HIDDEN 1
+ENV LOGGING_SYSTEM_ENABLED false
+ENV DEBUG true
+ENV TRACE ""
+
 # install
 RUN apt update && \
     apt upgrade -y && \
@@ -31,5 +38,14 @@ VOLUME /logs
 
 # data
 VOLUME /var/db/veilid-server
+
+# listen_address
+EXPOSE 5959
+
+# grpc_endpoint
+EXPOSE 4317
+
+EXPOSE 80
+EXPOSE 443
 
 ENTRYPOINT ["/bin/bash", "/entry.sh"]
