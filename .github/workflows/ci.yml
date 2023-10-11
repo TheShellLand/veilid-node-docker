@@ -28,7 +28,7 @@ jobs:
 
 
   publish-docker:
-    needs: docker-test
+    needs: docker-build
     runs-on: ubuntu-latest
     permissions:
       contents: read
