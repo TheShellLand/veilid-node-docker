@@ -5,6 +5,9 @@ on:
     branches: [ '*' ]
   pull_request:
     branches: [ '*' ]
+  schedule:
+    # At minute 0 past every 24th hour.
+    - cron: "0 */24 * * *"
 
 env:
   # Use docker.io for Docker Hub if empty
