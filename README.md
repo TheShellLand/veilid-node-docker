@@ -21,7 +21,7 @@ official: https://gitlab.com/veilid/veilid/-/blob/main/INSTALL.md
 ```
 
 ```shell
-bash run.sh -e DEBUG=false -e TRACE=true 
+/bin/bash run.sh -e DEBUG=false -e TRACE=true 
 ```
 
 ## Arguments
