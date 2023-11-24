@@ -30,6 +30,7 @@ jobs:
         run: docker build . --tag ${{ env.IMAGE_NAME }}
 
   docker-test:
+    needs: docker-build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
