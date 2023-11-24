@@ -38,7 +38,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Test docker
-        run: docker run --rm -it ghcr.io/theshellland/veilid-node:latest
+        run: docker run --rm ghcr.io/theshellland/veilid-node:latest
 
 
   publish-docker:
