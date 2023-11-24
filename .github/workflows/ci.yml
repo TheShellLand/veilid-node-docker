@@ -37,8 +37,10 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+      - name: Build docker
+        run: docker build . --tag ${{ env.IMAGE_NAME }}
       - name: Test docker
-        run: docker run --rm ghcr.io/theshellland/veilid-node:latest
+        run: docker run --rm ${{ env.IMAGE_NAME }}
 
 
   publish-docker:
