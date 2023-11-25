@@ -1,5 +1,7 @@
 # veilid-node-docker
 
+[![CI/CD](https://github.com/TheShellLand/veilid-node-docker/actions/workflows/ci.yml/badge.svg)](https://github.com/TheShellLand/veilid-node-docker/actions/workflows/ci.yml)
+
 Run a Veilid Node in docker
 
 <img width="1618" alt="image" src="https://github.com/TheShellLand/veilid-node-docker/assets/58240560/314913ec-653d-4ae5-a45c-9d79ebd7b397">
