@@ -2,6 +2,8 @@
 
 Run a Veilid Node in docker
 
+<img width="1618" alt="image" src="https://github.com/TheShellLand/veilid-node-docker/assets/58240560/314913ec-653d-4ae5-a45c-9d79ebd7b397">
+
 ## Install and run a Veilid Node standalone
 
 official: https://gitlab.com/veilid/veilid/-/blob/main/INSTALL.md
