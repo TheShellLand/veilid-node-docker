@@ -4,9 +4,7 @@
 
 set -e
 
-id
-
-VEILID_EVAL="veilid-server"
+VEILID_EVAL="/root/.cargo/bin/veilid-server"
 
 if [ ! -z "$RUST_BACKTRACE" ]; then
   VEILID_EVAL="RUST_BACKTRACE=${RUST_BACKTRACE} ${VEILID_EVAL}"
@@ -32,6 +30,6 @@ if [ "$TRACE" == "true" ]; then
   VEILID_EVAL="${VEILID_EVAL} --trace"
 fi
 
-veilid-server --dump-config
+${VEILID_EVAL} --dump-config
 
 eval ${VEILID_EVAL} $@
