@@ -1,6 +1,9 @@
-#!/bin/bash
+#!/bin/bash 
 
-cd $(dirname $0); set -xe
-# build
+# build 
 
-docker build $@ -t ghcr.io/theshellland/veilid-node:latest .
+cd "$(dirname $0)"
+set -xe
+
+source build-source.sh
+
