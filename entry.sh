@@ -30,6 +30,6 @@ if [ "$TRACE" == "true" ]; then
   VEILID_EVAL="${VEILID_EVAL} --trace"
 fi
 
-${VEILID_EVAL} --dump-config
+#${VEILID_EVAL} --dump-config
 
-eval ${VEILID_EVAL} $@
+${VEILID_EVAL} $@
