@@ -21,5 +21,5 @@ else
   -v veilid-server-logs:/logs \
   -v veilid-server-data:/var/db/veilid-server \
   -p 5959:5959 \
-  ghcr.io/theshellland/veilid-node:latest $@
+  ghcr.io/theshellland/veilid-node:latest --set-config 'client_api.listen_address="0.0.0.0:5959"' $@
 fi
