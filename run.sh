@@ -13,6 +13,7 @@ if [ -z "$@" ]; then
   -v veilid-server-node://root/.local/share/veilid/ \
   -v veilid-server-logs:/logs \
   -v veilid-server-data:/var/db/veilid-server \
+  --restart always \
   ghcr.io/theshellland/veilid-node:latest --set-config 'client_api.listen_address="0.0.0.0:5959"' $@
 else
   docker run -d --name veilid-node --net veilid \
@@ -21,5 +22,6 @@ else
   -v veilid-server-logs:/logs \
   -v veilid-server-data:/var/db/veilid-server \
   -p 5959:5959 \
-  ghcr.io/theshellland/veilid-node:latest $@
+  --restart always \
+  ghcr.io/theshellland/veilid-node:latest --set-config 'client_api.listen_address="0.0.0.0:5959"' $@
 fi
