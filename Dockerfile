@@ -3,7 +3,7 @@ FROM ghcr.io/theshellland/rust:latest
 # install
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y curl git build-essential vim iputils-ping netcat
+    apt install -y curl git build-essential vim iputils-ping netcat-traditional
 RUN git clone https://gitlab.com/veilid/veilid
 RUN cd /veilid/veilid-server \
     && /root/.cargo/bin/cargo install --path .
