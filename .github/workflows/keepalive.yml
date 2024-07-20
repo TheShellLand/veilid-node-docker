@@ -1,0 +1,35 @@
+name: keepalive
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+
+on:
+  push:
+    branches: [ '*' ]
+  pull_request:
+    branches: [ '*' ]
+  schedule:
+    # At 00:00 on day-of-month 1.
+    - cron: "0 0 1 * *"
+
+
+jobs:
+
+  actions_keepalive:
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: ubuntu-latest
+
+    name: Github Actions KeepAlive
+    steps:
+      - uses: actions/checkout@v3
+      - name: make commit
+        # Uses GitHub action defined in https://github.com/FredaXin/gitlit
+        uses: TheShellLand/github-actions-keepalive@latest
+        with:
+          # Change to your GitHub username
+          user-name: naisanzaa
+          # Change to your email used for GitHub account
+          user-email: naisanza@gmail.com
