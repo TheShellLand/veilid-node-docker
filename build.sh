@@ -1,9 +1,6 @@
-#!/bin/bash 
+#!/bin/bash
 
-# build 
-
-cd "$(dirname $0)"
-set -xe
+cd "$(dirname $0)"; set -xe
+# build
 
 source build-source.sh
-
