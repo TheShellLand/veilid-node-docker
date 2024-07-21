@@ -24,10 +24,10 @@ VOLUME /var/db/veilid-server
 
 # listen_address
 # IPC is used by default
-EXPOSE 5959
+# EXPOSE 5959
 
-# IPC port?
-EXPOSE 5110
+# I see this port used in logs
+EXPOSE 5150
 
 # grpc_endpoint
 EXPOSE 4317
