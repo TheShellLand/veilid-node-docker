@@ -9,10 +9,10 @@ RUN cd /veilid/veilid-server \
     && /root/.cargo/bin/cargo install --path .
 
 COPY entry.sh /entry.sh
-COPY config /config
+COPY config/veilid-server.conf /root/.config/veilid/veilid-server.conf
 
 # config
-VOLUME /config
+VOLUME /root/.config/veilid/
 
 # State holds the node ID etc. to persist between runs
 VOLUME /root/.local/share/veilid/
