@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# exec into veilid
+
+cd $(dirname $0); set -xe
+
+bash veilid-server --dump-config
