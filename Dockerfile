@@ -9,6 +9,7 @@ RUN cd /veilid/veilid-server \
     && /root/.cargo/bin/cargo install --path .
 
 COPY entry.sh /entry.sh
+COPY config /config
 
 # config
 VOLUME /config
