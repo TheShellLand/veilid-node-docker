@@ -1,5 +1,12 @@
 FROM ghcr.io/theshellland/rust:latest
 
+ENV RUST_BACKTRACE=1
+ENV RUST_BACKTRACE=full
+ENV COLORBT_SHOW_HIDDEN=1
+ENV LOGGING_SYSTEM_ENABLED=false
+ENV DEBUG=true
+ENV TRACE=""
+
 # install
 RUN apt update && \
     apt upgrade -y && \
@@ -25,7 +32,7 @@ VOLUME /var/db/veilid-server
 
 # listen_address
 # IPC is used by default
-# EXPOSE 5959
+EXPOSE 5959
 
 # I see this port used in logs
 EXPOSE 5150

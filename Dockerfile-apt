@@ -1,16 +1,16 @@
 FROM ubuntu:latest
 
-ENV RUST_BACKTRACE 1
-ENV RUST_BACKTRACE full
-ENV COLORBT_SHOW_HIDDEN 1
-ENV LOGGING_SYSTEM_ENABLED false
-ENV DEBUG true
-ENV TRACE ""
+ENV RUST_BACKTRACE=1
+ENV RUST_BACKTRACE=full
+ENV COLORBT_SHOW_HIDDEN=1
+ENV LOGGING_SYSTEM_ENABLED=false
+ENV DEBUG=true
+ENV TRACE=""
 
 # install
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y wget gpg sudo systemd
+    apt install -y wget gpg sudo systemd vim
 RUN wget -O- https://packages.veilid.net/gpg/veilid-packages-key.public | sudo gpg --dearmor -o /usr/share/keyrings/veilid-packages-keyring.gpg
 
 RUN if dpkg --print-architecture | grep arm64 ; then echo "deb [arch=arm64 signed-by=/usr/share/keyrings/veilid-packages-keyring.gpg] https://packages.veilid.net/apt stable main" | sudo tee /etc/apt/sources.list.d/veilid.list; fi
@@ -23,12 +23,13 @@ RUN sudo apt install -y veilid-server veilid-cli
 
 COPY entry.sh /entry.sh
 RUN chown veilid /entry.sh
+COPY config/veilid-server.conf /etc/veilid-server/veilid-server.conf
 
 # sudo -u veilid veilid-server
-USER veilid
+#USER veilid
 
 # config
-VOLUME /config
+VOLUME /root/.config/veilid/
 
 # State holds the node ID etc. to persist between runs
 VOLUME /root/.local/share/veilid/
@@ -40,7 +41,11 @@ VOLUME /logs
 VOLUME /var/db/veilid-server
 
 # listen_address
+# IPC is used by default
 EXPOSE 5959
+
+# I see this port used in logs
+EXPOSE 5150
 
 # grpc_endpoint
 EXPOSE 4317
