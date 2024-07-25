@@ -4,4 +4,4 @@
 
 cd $(dirname $0); set -xe
 
-docker exec -it veilid-node bash
+docker exec -it veilid-server bash

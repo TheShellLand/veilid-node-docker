@@ -4,4 +4,4 @@
 
 cd $(dirname $0); set -xe
 
-docker stop veilid-node
+docker stop veilid-server

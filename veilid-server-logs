@@ -4,4 +4,4 @@
 
 cd $(dirname $0); set -xe
 
-docker logs veilid-node "$@"
+docker logs veilid-server "$@"
