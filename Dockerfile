@@ -4,15 +4,15 @@ ENV RUST_BACKTRACE=1
 ENV RUST_BACKTRACE=full
 ENV COLORBT_SHOW_HIDDEN=1
 ENV LOGGING_SYSTEM_ENABLED=false
-ENV DEBUG=true
+ENV DEBUG=false
 ENV TRACE=""
 
 # install
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y curl git build-essential vim iputils-ping netcat-traditional
-RUN git clone https://gitlab.com/veilid/veilid
-RUN cd /veilid/veilid-server \
+    apt install -y curl git build-essential vim iputils-ping netcat-traditional cmake
+RUN git clone https://gitlab.com/veilid/veilid \
+    && cd /veilid/veilid-server \
     && /root/.cargo/bin/cargo install --path .
 
 COPY entry.sh /entry.sh
