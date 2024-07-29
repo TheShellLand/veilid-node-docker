@@ -6,12 +6,18 @@ set -e
 
 VEILID_EVAL="/root/.cargo/bin/veilid-server"
 
+if which veilid-server; then
+  VEILID_EVAL="$(which veilid-server)"
+fi
+
+ENV_VARS=""
+
 if [ ! -z "$RUST_BACKTRACE" ]; then
-  VEILID_EVAL="RUST_BACKTRACE=${RUST_BACKTRACE} ${VEILID_EVAL}"
+  ENV_VARS="env RUST_BACKTRACE=${RUST_BACKTRACE}"
 fi
 
 if [ ! -z "$COLORBT_SHOW_HIDDEN" ]; then
-  VEILID_EVAL="COLORBT_SHOW_HIDDEN=${COLORBT_SHOW_HIDDEN} ${VEILID_EVAL}"
+  ENV_VARS="env COLORBT_SHOW_HIDDEN=${COLORBT_SHOW_HIDDEN} ${ENV_VARS}"
 fi
 
 if [ ! -z "$LOGGING_SYSTEM_ENABLED" ]; then
@@ -28,4 +34,6 @@ fi
 
 #${VEILID_EVAL} --dump-config
 
-${VEILID_EVAL} $@
+set -x
+
+exec ${ENV_VARS} ${VEILID_EVAL} $@
