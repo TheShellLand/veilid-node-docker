@@ -21,6 +21,7 @@ elif [ -z "$@" ]; then
   -v veilid-server-node:/root/.local/share/veilid/ \
   -v veilid-server-logs:/logs \
   -v veilid-server-data:/var/db/veilid-server \
+  -e DEBUG=true \
   --restart always \
   ghcr.io/theshellland/veilid-node:latest \
     $@
@@ -31,6 +32,7 @@ else
   -v veilid-server-node:/root/.local/share/veilid/ \
   -v veilid-server-logs:/logs \
   -v veilid-server-data:/var/db/veilid-server \
+  -e DEBUG=true \
   -p 5959:5959 \
   -p 5150:5150 \
   --restart always \
