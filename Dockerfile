@@ -7,6 +7,8 @@ ENV LOGGING_SYSTEM_ENABLED=false
 ENV DEBUG=false
 ENV TRACE=""
 
+ENV VEILID_CONFIG=/root/.config/veilid/veilid-server.conf
+
 # install
 RUN apt update && \
     apt upgrade -y && \
@@ -16,7 +18,7 @@ RUN git clone https://gitlab.com/veilid/veilid \
     && /root/.cargo/bin/cargo install --path .
 
 COPY entry.sh /entry.sh
-COPY config/veilid-server.conf /root/.config/veilid/veilid-server.conf
+COPY config/veilid-server.conf /veilid-server.conf
 
 # config
 VOLUME /root/.config/veilid/

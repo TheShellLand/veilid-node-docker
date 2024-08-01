@@ -4,6 +4,10 @@
 
 set -e
 
+if ! [ -f "$VEILID_CONFIG" ]; then
+  cp -v /veilid-server.conf "$VEILID_CONFIG"
+fi
+
 VEILID_EVAL="/root/.cargo/bin/veilid-server"
 
 if which veilid-server; then
