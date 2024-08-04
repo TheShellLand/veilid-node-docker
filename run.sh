@@ -39,5 +39,3 @@ else
   ghcr.io/theshellland/veilid-node:latest \
     $@
 fi
-
-docker ps -a | grep veilid-server
