@@ -36,7 +36,10 @@ if [ "$TRACE" == "true" ]; then
   VEILID_EVAL="${VEILID_EVAL} --trace"
 fi
 
-#${VEILID_EVAL} --dump-config
+
+if [ "$DEBUG" == "true" ]; then
+  ${VEILID_EVAL} --dump-config
+fi
 
 set -x
 
