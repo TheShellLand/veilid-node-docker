@@ -39,6 +39,8 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: Build docker
         run: docker build -f Dockerfile . --tag ${{ env.IMAGE_NAME }}
+      - name: Test config
+        run: /bin/bash veilid-server-config
 #      - name: Test docker
 #        run: docker run --rm ${{ env.IMAGE_NAME }}
 
