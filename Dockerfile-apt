@@ -4,7 +4,7 @@ ENV RUST_BACKTRACE=1
 ENV RUST_BACKTRACE=full
 ENV COLORBT_SHOW_HIDDEN=1
 ENV LOGGING_SYSTEM_ENABLED=false
-ENV DEBUG=true
+ENV DEBUG=false
 ENV TRACE=""
 
 ENV VEILID_CONFIG=/etc/veilid-server/veilid-server.conf
@@ -12,7 +12,10 @@ ENV VEILID_CONFIG=/etc/veilid-server/veilid-server.conf
 # install
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y wget gpg sudo systemd vim
+    apt install -y wget gpg sudo systemd vim && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/\* /tmp/\* /var/tmp/*
+
 RUN wget -O- https://packages.veilid.net/gpg/veilid-packages-key.public | sudo gpg --dearmor -o /usr/share/keyrings/veilid-packages-keyring.gpg
 
 RUN if dpkg --print-architecture | grep arm64 ; then echo "deb [arch=arm64 signed-by=/usr/share/keyrings/veilid-packages-keyring.gpg] https://packages.veilid.net/apt stable main" | sudo tee /etc/apt/sources.list.d/veilid.list; fi
