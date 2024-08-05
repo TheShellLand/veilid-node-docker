@@ -29,6 +29,7 @@ RUN apt update && \
 COPY entry.sh /entry.sh
 RUN chown veilid /entry.sh
 COPY config/veilid-server.conf /veilid-server.conf
+COPY config/veilid-server.conf $VEILID_CONFIG
 
 # sudo -u veilid veilid-server
 #USER veilid
