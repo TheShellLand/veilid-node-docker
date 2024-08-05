@@ -23,8 +23,8 @@ RUN if dpkg --print-architecture | grep amd64 ; then echo "deb [arch=amd64 signe
 
 RUN cat /etc/apt/sources.list.d/veilid.list
 
-RUN sudo apt update
-RUN sudo apt install -y veilid-server veilid-cli
+RUN apt update && \
+    apt install -y veilid-server veilid-cli
 
 COPY entry.sh /entry.sh
 RUN chown veilid /entry.sh
