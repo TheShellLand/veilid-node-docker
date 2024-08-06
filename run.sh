@@ -14,7 +14,7 @@ if [ "$@" == "--dump-config" ]; then
   -v veilid-server-data:/var/db/veilid-server \
   ghcr.io/theshellland/veilid-node:latest \
   --dump-config
-elif [ -z "$@" ]; then
+else
   docker rm -f veilid-server 2>/dev/null || true
   docker run -d --name veilid-server --net veilid \
   -v veilid-server-config:/config \
@@ -25,17 +25,4 @@ elif [ -z "$@" ]; then
   --restart always \
   ghcr.io/theshellland/veilid-node:latest \
   "$@"
-else
-  docker rm -f veilid-server 2>/dev/null || true
-  docker run -d --name veilid-server --net veilid \
-  -v veilid-server-config:/config \
-  -v veilid-server-node:/root/.local/share/veilid/ \
-  -v veilid-server-logs:/logs \
-  -v veilid-server-data:/var/db/veilid-server \
-  -e DEBUG=false \
-  -p 5959:5959 \
-  -p 5150:5150 \
-  --restart always \
-  ghcr.io/theshellland/veilid-node:latest \
-    $@
 fi
