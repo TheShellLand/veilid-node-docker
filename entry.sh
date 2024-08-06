@@ -24,10 +24,6 @@ if [ ! -z "$COLORBT_SHOW_HIDDEN" ]; then
   ENV_VARS="env COLORBT_SHOW_HIDDEN=${COLORBT_SHOW_HIDDEN} ${ENV_VARS}"
 fi
 
-if [ ! -z "$LOGGING_SYSTEM_ENABLED" ]; then
-  VEILID_EVAL="${VEILID_EVAL} -s logging.system.enabled=${LOGGING_SYSTEM_ENABLED}"
-fi
-
 if [ "$DEBUG" == "true" ]; then
   VEILID_EVAL="${VEILID_EVAL} --debug"
 fi
