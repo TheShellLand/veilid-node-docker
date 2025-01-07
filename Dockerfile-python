@@ -8,15 +8,26 @@ ENV TRACE=""
 
 ENV VEILID_CONFIG=/root/.config/veilid/veilid-server.conf
 
-# install
+# update image
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y curl git build-essential vim iputils-ping netcat-traditional cmake && \
+    apt clean && \
+    rm -rf /var/cache/apt/archives /var/lib/apt/lists/*
+
+# install python
+RUN apt update && \
     apt install -y python3 && \
     apt clean && \
     rm -rf /var/lib/apt/lists/\* /tmp/\* /var/tmp/*
 
-RUN git clone https://gitlab.com/veilid/veilid && \
+# install veilid build tools
+RUN apt update && \
+    apt upgrade -y && \
+    apt install -y curl git build-essential vim iputils-ping netcat-traditional cmake && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/\* /tmp/\* /var/tmp/*
+
+RUN git clone https://gitlab.com/veilid/veilid /veilid && \
     cd /veilid/veilid-server && \
     git pull && \
     /root/.cargo/bin/cargo install --path . && \
