@@ -1,0 +1,53 @@
+FROM ghcr.io/theshellland/rust:latest
+
+ENV RUST_BACKTRACE=1
+ENV RUST_BACKTRACE=full
+ENV COLORBT_SHOW_HIDDEN=1
+ENV DEBUG=false
+ENV TRACE=""
+
+ENV VEILID_CONFIG=/root/.config/veilid/veilid-server.conf
+
+# install
+RUN apt update && \
+    apt upgrade -y && \````
+    apt install -y curl git build-essential vim iputils-ping netcat-traditional cmake && \
+    apt install -y python3 && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/\* /tmp/\* /var/tmp/*
+
+RUN git clone https://gitlab.com/veilid/veilid && \
+    cd /veilid/veilid-server && \
+    git pull && \
+    /root/.cargo/bin/cargo install --path . && \
+    rm -rf /veilid/veilid-server
+
+COPY entry.sh /entry.sh
+COPY config/veilid-server.conf /veilid-server.conf
+
+# config
+VOLUME /root/.config/veilid/
+
+# State holds the node ID etc. to persist between runs
+VOLUME /root/.local/share/veilid/
+
+# logs
+VOLUME /logs
+
+# data
+VOLUME /var/db/veilid-server
+
+# listen_address
+# IPC is used by default
+EXPOSE 5959
+
+# I see this port used in logs
+EXPOSE 5150
+
+# grpc_endpoint
+EXPOSE 4317
+
+EXPOSE 80
+EXPOSE 443
+
+ENTRYPOINT ["/bin/bash", "/entry.sh"]
