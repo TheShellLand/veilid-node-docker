@@ -8,10 +8,12 @@ apt update && \
 apt upgrade -y && \
 apt install -y curl git build-essential vim iputils-ping netcat-traditional cmake && \
 apt clean && \
-rm -rf /var/lib/apt/lists/\* /tmp/\* /var/tmp/*
+rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+cd /
 git clone https://gitlab.com/veilid/veilid && \
-cd /veilid/veilid-server && \
+cd veilid/veilid-server && \
 git pull && \
 /root/.cargo/bin/cargo install --path . && \
-rm -rf /veilid/veilid-server
+cd / && \
+rm -rf veilid/veilid-server

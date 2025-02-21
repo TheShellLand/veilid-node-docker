@@ -8,19 +8,22 @@ ENV TRACE=""
 
 ENV VEILID_CONFIG=/root/.config/veilid/veilid-server.conf
 
-# update image
-RUN apt update && \
-    apt upgrade -y && \
-    apt clean && \
-    rm -rf /var/cache/apt/archives /var/lib/apt/lists/*
-
 # install python
 RUN apt update && \
     apt install -y python3 && \
     apt clean && \
     rm -rf /var/lib/apt/lists/\* /tmp/\* /var/tmp/*
 
-# install veilid build tools
+RUN git clone https://github.com/TheShellLand/antsable && \
+    cd antsable && \
+    bash install-ansible.sh && \
+    bash ansible-local.sh playbooks/apt-upgrade.yml -v && \
+    bash ansible-local.sh playbooks/build-tools.yml -v && \
+    bash ansible-local.sh playbooks/python3.yml -v && \
+    bash ansible-local.sh playbooks/apt-clean.yml -v
+
+
+# install veilie
 COPY install.sh .
 RUN bash install.sh
 
