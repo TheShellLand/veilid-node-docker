@@ -22,7 +22,6 @@ RUN git clone https://gitlab.com/veilid/veilid && \
     rm -rf /veilid/veilid-server
 
 COPY entry.sh /entry.sh
-COPY config/veilid-server.conf /veilid-server.conf
 
 # config
 VOLUME /root/.config/veilid/
