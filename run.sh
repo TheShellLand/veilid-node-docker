@@ -7,7 +7,7 @@ cd $(dirname $0); set -xe
 docker network create veilid || true
 docker rm -f veilid-server 2>/dev/null || true
 
-docker run --name veilid-server --net veilid \
+docker run -d --name veilid-server --net veilid \
 -v veilid-server-config:/config \
 -v veilid-server-node:/root/.local/share/veilid/ \
 -v veilid-server-logs:/logs \
